@@ -11,12 +11,16 @@
       alignment="CENTER" spacing="20"
       style="-fx-background-color: #1a1a2e; -fx-padding: 40;">
 
-    <!-- Title -->
-    <Text text="FocusFlow" style="-fx-fill: #e94560; -fx-font-size: 36; -fx-font-weight: bold;"/>
-    <Text text="Stay focused. Get things done." style="-fx-fill: #a8a8b3; -fx-font-size: 14;"/>
+    <Text text="FocusFlow"
+          style="-fx-fill: #e94560; -fx-font-size: 36; -fx-font-weight: bold;"/>
+    <Text text="Stay focused. Get things done."
+          style="-fx-fill: #a8a8b3; -fx-font-size: 14;"/>
 
-    <!-- Timer Display -->
-    <StackPane style="-fx-background-color: #16213e; -fx-background-radius: 100; -fx-min-width: 220; -fx-min-height: 220;">
+    <!-- Timer Circle -->
+    <StackPane style="-fx-background-color: #16213e;
+                      -fx-background-radius: 100;
+                      -fx-min-width: 220;
+                      -fx-min-height: 220;">
         <Text fx:id="timerText" text="25:00"
               style="-fx-fill: #e94560; -fx-font-size: 58; -fx-font-weight: bold;"/>
     </StackPane>
@@ -25,7 +29,7 @@
     <ProgressBar fx:id="progressBar" progress="1.0" prefWidth="300"
                  style="-fx-accent: #e94560;"/>
 
-    <!-- Status Label -->
+    <!-- Status -->
     <Label fx:id="statusLabel" text="Ready to Focus"
            style="-fx-text-fill: #a8a8b3; -fx-font-size: 14;"/>
 
@@ -34,27 +38,38 @@
                prefWidth="300"
                style="-fx-background-color: #16213e; -fx-text-fill: white;
                       -fx-prompt-text-fill: #555; -fx-border-color: #e94560;
-                      -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 8;"/>
+                      -fx-border-radius: 5; -fx-background-radius: 5;
+                      -fx-padding: 8;"/>
 
-    <!-- Buttons -->
+    <!-- Start & Reset Buttons -->
     <HBox alignment="CENTER" spacing="15">
-        <Button fx:id="startBtn" text="▶ Start" onAction="#handleStartPause"
+        <Button fx:id="startBtn" text="▶ Start"
+                onAction="#handleStartPause"
                 style="-fx-background-color: #e94560; -fx-text-fill: white;
-                       -fx-font-size: 16; -fx-padding: 10 30; -fx-background-radius: 25;
-                       -fx-cursor: hand;"/>
-        <Button fx:id="resetBtn" text="↺ Reset" onAction="#handleReset"
+                       -fx-font-size: 16; -fx-padding: 10 30;
+                       -fx-background-radius: 25; -fx-cursor: hand;"/>
+        <Button fx:id="resetBtn" text="↺ Reset"
+                onAction="#handleReset"
                 style="-fx-background-color: #16213e; -fx-text-fill: #a8a8b3;
-                       -fx-font-size: 16; -fx-padding: 10 30; -fx-background-radius: 25;
-                       -fx-border-color: #a8a8b3; -fx-border-radius: 25; -fx-cursor: hand;"/>
+                       -fx-font-size: 16; -fx-padding: 10 30;
+                       -fx-background-radius: 25; -fx-border-color: #a8a8b3;
+                       -fx-border-radius: 25; -fx-cursor: hand;"/>
     </HBox>
 
     <!-- Session Count -->
     <Label fx:id="sessionCountLabel" text="Sessions Today: 0"
            style="-fx-text-fill: #a8a8b3; -fx-font-size: 13;"/>
 
-    <!-- History Button -->
-    <Button text="📋 View History" onAction="#switchToHistory"
-            style="-fx-background-color: transparent; -fx-text-fill: #e94560;
-                   -fx-font-size: 13; -fx-cursor: hand; -fx-underline: true;"/>
+    <!-- Navigation Buttons -->
+    <HBox alignment="CENTER" spacing="20">
+        <Button text="📋 History" onAction="#switchToHistory"
+                style="-fx-background-color: transparent;
+                       -fx-text-fill: #e94560; -fx-font-size: 13;
+                       -fx-cursor: hand; -fx-underline: true;"/>
+        <Button text="🏆 Leaderboard" onAction="#switchToLeaderboard"
+                style="-fx-background-color: transparent;
+                       -fx-text-fill: #e94560; -fx-font-size: 13;
+                       -fx-cursor: hand; -fx-underline: true;"/>
+    </HBox>
 
 </VBox>

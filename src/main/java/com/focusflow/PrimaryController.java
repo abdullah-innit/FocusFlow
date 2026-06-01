@@ -1,14 +1,18 @@
 package com.focusflow;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.scene.text.Text;
-import javafx.util.Duration;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
+import javafx.util.Duration;
 
 public class PrimaryController {
 
@@ -29,6 +33,7 @@ public class PrimaryController {
 
     private static final int WORK_MINUTES = 25;
     private static final int SHORT_BREAK = 5;
+    private static String currentUser = "User1";
 
     @FXML
     public void initialize() {
@@ -86,12 +91,14 @@ public class PrimaryController {
             sessionCount++;
             sessionCountLabel.setText("Sessions Today: " + sessionCount);
 
-            // Save session to file
             String task = taskInput.getText().trim();
             String time = LocalDateTime.now()
                 .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
             Session session = new Session(task, WORK_MINUTES, time);
             FileStorageService.saveSession(session);
+
+            // Save to leaderboard — 10 points per session
+            LeaderboardController.saveUserPoints(currentUser, 10);
 
             statusLabel.setText("✅ Session Complete! Take a break.");
             isWorkSession = false;
@@ -123,6 +130,11 @@ public class PrimaryController {
     @FXML
     private void switchToHistory() throws IOException {
         App.setRoot("secondary");
+    }
+
+    @FXML
+    private void switchToLeaderboard() throws IOException {
+        App.setRoot("leaderboard");
     }
 
     private void updateTimerDisplay() {

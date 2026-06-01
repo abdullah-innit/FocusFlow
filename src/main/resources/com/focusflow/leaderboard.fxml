@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.focusflow.LeaderboardController"
+      alignment="CENTER" spacing="20"
+      style="-fx-background-color: #1a1a2e; -fx-padding: 40;">
+
+    <Text fx:id="titleText" text="🏆 Leaderboard"
+          style="-fx-fill: #e94560; -fx-font-size: 30; -fx-font-weight: bold;"/>
+
+    <Text text="Top Focusers"
+          style="-fx-fill: #a8a8b3; -fx-font-size: 14;"/>
+
+    <ListView fx:id="leaderboardList" prefWidth="420" prefHeight="300"
+              style="-fx-background-color: #16213e;
+                     -fx-control-inner-background: #16213e;
+                     -fx-text-fill: white;"/>
+
+    <Label fx:id="yourRankLabel" text=""
+           style="-fx-text-fill: #a8a8b3; -fx-font-size: 13;"/>
+
+    <Button text="⬅ Back to Timer" onAction="#goBack"
+            style="-fx-background-color: #e94560; -fx-text-fill: white;
+                   -fx-font-size: 14; -fx-padding: 10 30;
+                   -fx-background-radius: 25; -fx-cursor: hand;"/>
+
+</VBox>
